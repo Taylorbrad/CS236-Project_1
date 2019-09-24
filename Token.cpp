@@ -10,39 +10,35 @@ Token::Token(TokenType inTokenType, stack <char> tokenFromScanner, int lineNum)
 }
 string Token::tokenToString()
 {
-    // cout << "debug tokenToString~13";
     string tempToken = "";
     string stringToken = "";
     char tempTop;
     
-    stack <char> temp = this->token; //save the token array so that it isnt destroyed in the process
+    stack <char> temp = this->token; //save the token array so that it isnt destroyed in the process. In hindsight I may not have considered scope.
     
     while(!this->token.empty())
     {
-        // cout << "debug TTSwhile22";
         tempTop = this->token.top();
         stringToken = tempTop + stringToken;
         token.pop();
     }
     
     this->token = temp; //reload the token array to what it was
-    // cout << "debug TTSB4 return";
+
     return stringToken;
     
 }
-string Token::tokenTypeToString(/*TokenType tokenType, stack <char> token, int lineNum*/)
+string Token::tokenTypeToString()
 {
     switch(this->tokenType)
     {
         case COMMA:
         {
-            // cout << "com-";
             return "COMMA"; 
             break;
         }
         case PERIOD:
         {
-            // cout << "per-";
             return "PERIOD"; 
             break;
         }
@@ -78,7 +74,6 @@ string Token::tokenTypeToString(/*TokenType tokenType, stack <char> token, int l
         }
         case ADD:
         {
-            // cout << "add-";
             return "ADD"; 
             break;
         }
@@ -118,7 +113,6 @@ string Token::tokenTypeToString(/*TokenType tokenType, stack <char> token, int l
         }
         case UNDEFINED:
         {
-            // cout << "und-";
             return "UNDEFINED"; 
             break;
         }
@@ -130,8 +124,8 @@ string Token::tokenTypeToString(/*TokenType tokenType, stack <char> token, int l
     }
     return "Error";
 }
-string Token::toString(/*TokenType tokenType, stack <char> token, int lineNum*/)
+string Token::toString()
 {
-    string tokenLine = "(" + tokenTypeToString(/*tokenType*/) + ",\"" + tokenToString() + "\"," + to_string(this->lineNumOcurringOn) + ")";
+    string tokenLine = "(" + tokenTypeToString() + ",\"" + tokenToString() + "\"," + to_string(this->lineNumOcurringOn) + ")";
     return tokenLine;
 }

@@ -10,8 +10,8 @@ class Token
     public:
         Token(TokenType inTokenType, stack <char> tokenFromScanner, int lineNum);
         string tokenToString();
-        string tokenTypeToString(/*TokenType, stack <char> token, int lineNum*/);
-        string toString(/*TokenType, stack <char> token>, int lineNum*/);
+        string tokenTypeToString();
+        string toString();
         
     private:
         stack <char> token;
