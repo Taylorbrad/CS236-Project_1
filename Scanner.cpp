@@ -45,11 +45,12 @@ void Scanner::tokenize()
             }
             inFile.get();
         }
-        // badCreateFlag = 0;
+        // badCreateFlag = 0; delete
+
         currentTokenStack = emptyStack; //Empty the stack to fill it with another token
         
         currentChar = inFile.get(); //get the next character
-        
+    
         
         tokenType = setTokenType(currentChar, inFile.peek());//set token types
         //old comment : if current character is one of the single character tokens, create the token object and move to the next token in file. Otherwise, keep scanning
